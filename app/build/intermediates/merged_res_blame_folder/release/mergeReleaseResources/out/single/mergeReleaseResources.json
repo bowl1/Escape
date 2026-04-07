@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.libowen.fakecall.app-release-69:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.libowen.fakecall.app-main-70:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-release-69:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.libowen.fakecall.app-main-70:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-release-69:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.libowen.fakecall.app-main-70:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-release-69:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.libowen.fakecall.app-main-70:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-release-69:/drawable_ic_call.xml.flat",
+        "source": "com.libowen.fakecall.app-main-70:/drawable/ic_call.xml"
+    }
+]

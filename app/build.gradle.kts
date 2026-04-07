@@ -8,21 +8,32 @@ plugins {
 
 android {
     namespace = "com.libowen.fakecall"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.libowen.fakecall"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
+        targetSdk = 35
+        versionCode = 3
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = System.getenv("FAKECALL_KEYSTORE_PATH")
+            if (keystorePath != null) storeFile = file(keystorePath)
+            storePassword = System.getenv("FAKECALL_STORE_PASSWORD") ?: ""
+            keyAlias = System.getenv("FAKECALL_KEY_ALIAS") ?: "fakecall"
+            keyPassword = System.getenv("FAKECALL_KEY_PASSWORD") ?: ""
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

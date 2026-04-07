@@ -79,6 +79,13 @@ class NotificationHelper @Inject constructor(
             .build()
 
         notificationManager.notify(NOTIFICATION_INCOMING, notification)
+
+        // 兜底：直接启动 Activity，防止 Full-Screen Intent 被厂商 ROM（如华为 EMUI）或虚拟空间（如 GSpace）拦截
+        try {
+            context.startActivity(fullScreenIntent)
+        } catch (_: Exception) {
+            // 忽略，通知路径已作为主路径
+        }
     }
 
     fun buildInCallNotification(callerName: String, durationText: String): Notification {

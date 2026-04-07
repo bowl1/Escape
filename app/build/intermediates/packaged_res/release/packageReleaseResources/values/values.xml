@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#1C1B1F</color>
+    <string name="answer">Answer</string>
+    <string name="app_name">FakeCall</string>
+    <string name="call_ended">Call Ended</string>
+    <string name="decline">Decline</string>
+    <string name="end_call">End Call</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="notification_channel_in_call">In Call</string>
+    <string name="notification_channel_incoming">Incoming Call</string>
+    <style name="Theme.FakeCall" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

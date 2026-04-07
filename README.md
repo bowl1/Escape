@@ -1,8 +1,19 @@
-# Escape — Fake Call App
+<h1><img src="store-assets/icon-512.png" width="60" alt="Escape icon" style="vertical-align:middle; margin-right:12px">Escape — Fake Call App</h1>
 
 We've all been there — a conversation you can't get out of, a date that isn't going well, a meeting that ran an hour too long. Sometimes the most graceful exit is a phone call that couldn't wait.
 
 **Escape gives you that call, on demand.** Tap once and your phone rings with a convincing incoming call — ringtone, vibration, caller name, the works. Answer it, make your excuse, and walk away. No awkward goodbyes, no explanations needed.
+
+---
+
+## App Availability
+
+The app is currently available via Google Play Closed Testing. This allows real users to try the app before public release and provide feedback.  
+Join to try the app early:
+
+- **Google Group**: [test_app_escape@googlegroups.com](mailto:test_app_escape@googlegroups.com)
+- **Join on Android**: [Google Play](https://play.google.com/store/apps/details?id=com.libowen.fakecall)
+- **Join on the web**: [play.google.com/apps/testing/com.libowen.fakecall](https://play.google.com/apps/testing/com.libowen.fakecall)
 
 ---
 
