@@ -1,4 +1,0 @@
--keep,allowobfuscation,allowshrinking class com.libowen.fakecall.ui.contacts.ContactsViewModel
--keep,allowobfuscation,allowshrinking class com.libowen.fakecall.ui.contacts.ContactsViewModel
--keep,allowobfuscation,allowshrinking class com.libowen.fakecall.ui.home.HomeViewModel
--keep,allowobfuscation,allowshrinking class com.libowen.fakecall.ui.home.HomeViewModel

@@ -1,0 +1,24 @@
+# Local properties (SDK path, signing config)
+local.properties
+
+# Build output
+build/
+app/build/
+
+# Signing keys — never commit these
+*.jks
+*.keystore
+
+# IDE
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
+
+# Claude Code local settings
+.claude/
+
+# OS
+.DS_Store

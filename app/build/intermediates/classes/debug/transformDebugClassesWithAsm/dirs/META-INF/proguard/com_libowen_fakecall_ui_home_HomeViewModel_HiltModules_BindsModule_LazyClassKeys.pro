@@ -1,1 +1,0 @@
--keep,allowobfuscation,allowshrinking class com.libowen.fakecall.ui.home.HomeViewModel
