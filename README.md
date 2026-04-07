@@ -1,4 +1,4 @@
-<h1><img src="store-assets/icon-512.png" width="60" alt="Escape icon" style="vertical-align:middle; margin-right:12px">Escape — Fake Call App</h1>
+<table><tr><td><img src="store-assets/icon-512.png" width="60" alt="Escape icon"></td><td><h1>Escape — Fake Call App</h1></td></tr></table>
 
 We've all been there — a conversation you can't get out of, a date that isn't going well, a meeting that ran an hour too long. Sometimes the most graceful exit is a phone call that couldn't wait.
 
