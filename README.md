@@ -8,9 +8,7 @@ We've all been there — a conversation you can't get out of, a date that isn't 
 
 ## Demo
 
-<video src="demo.mp4" controls width="320"></video>
-
-> If the video doesn't play inline, download [`demo.mp4`](demo.mp4).
+https://github.com/user-attachments/assets/096019e7-84d0-4211-a9a7-61a4c28ac457
 
 ---
 
