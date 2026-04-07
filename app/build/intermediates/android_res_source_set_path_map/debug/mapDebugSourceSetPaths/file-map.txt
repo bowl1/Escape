@@ -1,0 +1,8 @@
+com.libowen.fakecall.app-pngs-0 /Users/libowen/github/fakecall/app/build/generated/res/pngs/debug
+com.libowen.fakecall.app-resValues-1 /Users/libowen/github/fakecall/app/build/generated/res/resValues/debug
+com.libowen.fakecall.app-updated_navigation_xml-2 /Users/libowen/github/fakecall/app/build/generated/updated_navigation_xml/debug
+com.libowen.fakecall.app-packageDebugResources-3 /Users/libowen/github/fakecall/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.libowen.fakecall.app-packageDebugResources-4 /Users/libowen/github/fakecall/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.libowen.fakecall.app-debug-5 /Users/libowen/github/fakecall/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.libowen.fakecall.app-debug-6 /Users/libowen/github/fakecall/app/src/debug/res
+com.libowen.fakecall.app-main-7 /Users/libowen/github/fakecall/app/src/main/res

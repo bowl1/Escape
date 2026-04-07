@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FakeCall</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="answer">Answer</string>
+    <string name="decline">Decline</string>
+    <string name="end_call">End Call</string>
+    <string name="call_ended">Call Ended</string>
+    <string name="notification_channel_incoming">Incoming Call</string>
+    <string name="notification_channel_in_call">In Call</string>
+</resources>

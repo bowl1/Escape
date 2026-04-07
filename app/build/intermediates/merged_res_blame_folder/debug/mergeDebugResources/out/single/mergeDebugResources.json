@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-debug-72:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-main-74:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-debug-72:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.libowen.fakecall.app-main-74:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-debug-72:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-main-74:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-debug-72:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-main-74:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-debug-72:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.libowen.fakecall.app-main-74:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-debug-72:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.libowen.fakecall.app-main-74:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.libowen.fakecall.app-debug-72:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.libowen.fakecall.app-main-74:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-debug-72:/drawable_ic_call.xml.flat",
+        "source": "/Users/libowen/.gradle/daemon/9.3.1/com.libowen.fakecall.app-main-74:/drawable/ic_call.xml"
+    }
+]

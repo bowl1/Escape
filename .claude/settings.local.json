@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \":*)",
+      "Bash(echo $SHELL)",
+      "Bash(npm list:*)",
+      "Bash(./gradlew assembleDebug)",
+      "Bash(gradle wrapper:*)",
+      "Bash(source ~/.bash_profile)",
+      "Bash(source ~/.bashrc)",
+      "Bash(/usr/local/bin/gradle wrapper:*)",
+      "Bash(/usr/local/bin/gradle assembleDebug)",
+      "Bash(GRADLE_USER_HOME=$HOME/.gradle)",
+      "Bash(GRADLE_DIST=$GRADLE_USER_HOME/wrapper/dists)",
+      "Read(//Users/libowen/github/fakecall/**)",
+      "Bash(chmod +x /Users/libowen/github/fakecall/gradlew)",
+      "Skill(update-config)",
+      "Bash(export ANDROID_HOME=/Users/libowen/Library/Android/sdk)",
+      "Read(//private/tmp/**)"
+    ]
+  }
+}
