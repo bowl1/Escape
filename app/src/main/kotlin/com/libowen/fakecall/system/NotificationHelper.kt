@@ -98,6 +98,14 @@ class NotificationHelper @Inject constructor(
             .build()
     }
 
+    fun showInCallNotification(callerName: String) {
+        notificationManager.notify(NOTIFICATION_IN_CALL, buildInCallNotification(callerName, ""))
+    }
+
+    fun clearInCallNotification() {
+        notificationManager.cancel(NOTIFICATION_IN_CALL)
+    }
+
     fun clearIncomingCall() {
         notificationManager.cancel(NOTIFICATION_INCOMING)
     }

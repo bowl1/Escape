@@ -15,7 +15,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.libowen.fakecall.domain.model.CallerInfo
-import com.libowen.fakecall.system.FakeCallService
 import com.libowen.fakecall.ui.components.CallerAvatar
 import com.libowen.fakecall.ui.components.CallActionButton
 import com.libowen.fakecall.ui.components.TimerText
@@ -28,15 +27,10 @@ fun InCallScreen(
     caller: CallerInfo,
     onHangUp: () -> Unit
 ) {
-    // 等待 Service 就绪后开始 collect 计时（startForegroundService 是异步的）
     val serviceSeconds by produceState(0) {
         while (true) {
-            val service = FakeCallService.getInstance()
-            if (service != null) {
-                service.callDurationSeconds.collect { value = it }
-                break
-            }
-            delay(50)
+            delay(1000)
+            value += 1
         }
     }
 

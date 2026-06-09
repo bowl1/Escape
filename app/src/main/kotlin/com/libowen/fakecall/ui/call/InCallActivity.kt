@@ -6,12 +6,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.libowen.fakecall.domain.model.CallerInfo
 import com.libowen.fakecall.system.AlarmHelper
-import com.libowen.fakecall.system.FakeCallService
+import com.libowen.fakecall.system.NotificationHelper
 import com.libowen.fakecall.ui.theme.FakeCallTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class InCallActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var notificationHelper: NotificationHelper
 
     private lateinit var caller: CallerInfo
 
@@ -25,11 +29,7 @@ class InCallActivity : ComponentActivity() {
             avatarUri = intent.getStringExtra(AlarmHelper.EXTRA_CALLER_AVATAR)
         )
 
-        // 启动 Foreground Service（维护计时 + 常驻通知）
-        val serviceIntent = Intent(this, FakeCallService::class.java).apply {
-            putExtra(FakeCallService.EXTRA_CALLER_NAME, caller.name)
-        }
-        startForegroundService(serviceIntent)
+        notificationHelper.showInCallNotification(caller.name)
 
         setContent {
             FakeCallTheme {
@@ -42,10 +42,7 @@ class InCallActivity : ComponentActivity() {
     }
 
     private fun handleHangUp() {
-        // 停止通话 Service
-        stopService(Intent(this, FakeCallService::class.java))
-
-        // 跳转到通话结束界面
+        notificationHelper.clearInCallNotification()
         val intent = Intent(this, CallEndedActivity::class.java).apply {
             putExtra(AlarmHelper.EXTRA_CALLER_NAME, caller.name)
         }

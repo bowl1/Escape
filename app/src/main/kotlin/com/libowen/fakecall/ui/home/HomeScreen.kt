@@ -37,6 +37,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.libowen.fakecall.ui.components.CallerAvatar
 import com.libowen.fakecall.ui.theme.*
+import kotlin.math.roundToInt
 
 @Composable
 fun HomeScreen(
@@ -56,35 +57,41 @@ fun HomeScreen(
             // ── Header ──────────────────────────────────────────────
             HeaderSection()
 
-            Column(
+            // ── Tab Switcher (fixed, not scrollable) ─────────────────
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp)
             ) {
-                // ── Tab Switcher ────────────────────────────────────
                 TabSwitcher(
                     activeTab = state.activeTab,
                     onTabSelected = viewModel::setTab
                 )
+            }
 
-                // ── Tab Content ─────────────────────────────────────
-                when (state.activeTab) {
-                    CallTab.RANDOM -> RandomTabContent(
-                        scheduleState = state.scheduleState,
-                        delayMs = state.delayMs,
-                        onCallNow = viewModel::callNow,
-                        onDelayChanged = viewModel::setDelayMs,
-                        onSchedule = {
-                            if (state.scheduleState == ScheduleState.IDLE) {
-                                showScheduleDialog = true
-                            } else {
-                                viewModel.cancelScheduledCall()
-                            }
+            // ── Tab Content ─────────────────────────────────────────
+            when (state.activeTab) {
+                CallTab.RANDOM -> RandomTabContent(
+                    scheduleState = state.scheduleState,
+                    delayMs = state.delayMs,
+                    onCallNow = viewModel::callNow,
+                    onDelayChanged = viewModel::setDelayMs,
+                    onSchedule = {
+                        if (state.scheduleState == ScheduleState.IDLE) {
+                            showScheduleDialog = true
+                        } else {
+                            viewModel.cancelScheduledCall()
                         }
-                    )
-                    CallTab.CUSTOM -> CustomTabContent(
+                    }
+                )
+                CallTab.CUSTOM -> Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                        .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    CustomTabContent(
                         name = state.customName,
                         number = state.customNumber,
                         avatarUri = state.customAvatarUri,
@@ -213,10 +220,11 @@ private fun RandomTabContent(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
-        // 说明文字
+        Spacer(Modifier.height(8.dp))
         Text(
             text = "Tap to generate a random caller and call immediately",
             color = TextSecondary,
@@ -225,9 +233,8 @@ private fun RandomTabContent(
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.weight(1f))
 
-        // Call Now 标签
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -248,7 +255,8 @@ private fun RandomTabContent(
             )
         }
 
-        // 大圆形电话按钮
+        Spacer(Modifier.height(8.dp))
+
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -267,6 +275,8 @@ private fun RandomTabContent(
             )
         }
 
+        Spacer(Modifier.height(8.dp))
+
         Text(
             text = "Tap to call immediately",
             color = TextMuted,
@@ -274,15 +284,15 @@ private fun RandomTabContent(
             fontSize = 13.sp
         )
 
-        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.weight(1f))
 
-        // Scheduled Trigger 区域
         ScheduledSection(
             scheduleState = scheduleState,
             delayMs = delayMs,
             onDelayChanged = onDelayChanged,
             onSchedule = onSchedule
         )
+        Spacer(Modifier.height(16.dp))
     }
 }
 
@@ -556,9 +566,8 @@ private fun ScheduledSection(
             )
         }
 
-        // Delay slider (0 - 8 hours = 0 - 28_800_000 ms)
-        val maxMs = 8 * 60 * 60 * 1000L
-        val sliderValue = (delayMs.toFloat() / maxMs).coerceIn(0f, 1f)
+        // Delay slider: give 1-60s more track space, then compress 2-8 min.
+        val sliderValue = delayMsToSliderValue(delayMs)
         val delayLabel = formatDelay(delayMs)
 
         Row(
@@ -583,7 +592,7 @@ private fun ScheduledSection(
 
         Slider(
             value = sliderValue,
-            onValueChange = { onDelayChanged((it * maxMs).toLong()) },
+            onValueChange = { onDelayChanged(sliderValueToDelayMs(it)) },
             colors = SliderDefaults.colors(
                 thumbColor = CyanAccent,
                 activeTrackColor = CyanAccent,
@@ -672,10 +681,41 @@ private fun ScheduleConfirmDialog(
     }
 }
 
+private const val SecondsSliderWeight = 0.62f
+private const val MinDelaySeconds = 1
+private const val MaxSecondsDelay = 60
+private const val MinMinuteDelay = 2
+private const val MaxMinuteDelay = 8
+
+private fun delayMsToSliderValue(ms: Long): Float {
+    val totalSec = (ms / 1000).coerceIn(MinDelaySeconds.toLong(), (MaxMinuteDelay * 60).toLong())
+    return if (totalSec <= MaxSecondsDelay) {
+        val secondsProgress = (totalSec - MinDelaySeconds).toFloat() / (MaxSecondsDelay - MinDelaySeconds)
+        secondsProgress * SecondsSliderWeight
+    } else {
+        val minutes = (totalSec / 60).coerceIn(MinMinuteDelay.toLong(), MaxMinuteDelay.toLong())
+        val minutesProgress = (minutes - MinMinuteDelay).toFloat() / (MaxMinuteDelay - MinMinuteDelay)
+        SecondsSliderWeight + (minutesProgress * (1f - SecondsSliderWeight))
+    }.coerceIn(0f, 1f)
+}
+
+private fun sliderValueToDelayMs(value: Float): Long {
+    val slider = value.coerceIn(0f, 1f)
+    return if (slider <= SecondsSliderWeight) {
+        val secondsProgress = slider / SecondsSliderWeight
+        val seconds = MinDelaySeconds + (secondsProgress * (MaxSecondsDelay - MinDelaySeconds)).roundToInt()
+        seconds * 1000L
+    } else {
+        val minutesProgress = (slider - SecondsSliderWeight) / (1f - SecondsSliderWeight)
+        val minutes = MinMinuteDelay + (minutesProgress * (MaxMinuteDelay - MinMinuteDelay)).roundToInt()
+        minutes * 60 * 1000L
+    }
+}
+
 private fun formatDelay(ms: Long): String {
     val totalSec = ms / 1000
     return when {
-        totalSec < 60 -> "${totalSec}s"
+        totalSec <= 60 -> "${totalSec}s"
         totalSec < 3600 -> "${totalSec / 60} min"
         else -> {
             val h = totalSec / 3600
