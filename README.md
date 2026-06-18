@@ -6,14 +6,11 @@ We've all been there — a conversation you can't get out of, a date that isn't 
 
 ---
 
-## App Availability
+## App Publishment
 
-The app is currently available via Google Play Closed Testing. This allows real users to try the app before public release and provide feedback.  
-Join to try the app early:
+The app is available via Google Play
 
-- **Google Group**: [test_app_escape@googlegroups.com](mailto:test_app_escape@googlegroups.com)
 - **Join on Android**: [Google Play](https://play.google.com/store/apps/details?id=com.libowen.fakecall)
-- **Join on the web**: [play.google.com/apps/testing/com.libowen.fakecall](https://play.google.com/apps/testing/com.libowen.fakecall)
 
 ---
 
